@@ -1,0 +1,16 @@
+RewriteEngine On
+
+RewriteBase /bric-a-brac/swiss-food-composition-database/api/
+
+RewriteCond %{REQUEST_METHOD} GET
+RewriteRule ^v0/products$ get-products.php [L]
+
+RewriteCond %{REQUEST_METHOD} GET
+RewriteRule ^v0/products/([0-9]+)$ get-product.php?id=$1 [L]
+
+# TODO Pas uniquement GET
+RewriteCond %{REQUEST_METHOD} GET
+RewriteRule ^v0/products/search/(.+)$ search.php?q=$1 [L]
+
+ErrorDocument 404 /bric-a-brac/swiss-food-composition-database/api/not-found.php
+
